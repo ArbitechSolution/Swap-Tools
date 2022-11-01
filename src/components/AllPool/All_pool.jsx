@@ -1,11 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
 import './AllPool.css'
-import DetailPage from './DetailPage'
-
 
 
 function All_pool() {
+
+  const [post, setPost] = useState([]);
+  const axios = require('axios');
+
+  async function user() {
+
+    let res = await axios.get('https://d398-2a09-bac1-5b60-28-00-245-7.ap.ngrok.io/getAllPairs');
+    let data = res.data;
+    console.log(data);
+    setPost(data);
+  }
+
+  console.log(post);
+
+  useEffect(() => {
+    user();
+  }, [])
+
+
   return (
     <>
       <div className='container'>
@@ -14,44 +30,37 @@ function All_pool() {
             All Pool
           </div>
           <div className="table-responsive">
-          <table className=" col-md-12 table table-dark table-striped  table-hover border format">
-  <thead>
-    <tr className='row-format'>
-      <Link to="/DetailPage" element={DetailPage}><th scope="col">Id</th></Link>
-      <th scope="col" colspan="2">Address</th>
-      <th scope="col">Reverse 0</th>
-      <th scope="col">Reverse 1</th>
-      <th scope="col">Token 1</th>
-      <th scope="col">Token 2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td colspan="2">Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@fat</td><td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+            <table className=" col-md-12 table table-dark table-striped  table-hover border format">
+              <thead>
+                <tr className='row-format'>
+                  <th scope="col">Id</th>
+                  <th scope="col"> Pairs</th>
+                  <th scope="col" colspan="2">Address</th>
+                  <th scope="col">Reserve 0</th>
+                  <th scope="col">Reserve 1</th>
+                  <th scope="col">Token 1</th>
+                  <th scope="col">Token 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                {post.map((data) => {
+                  console.log("data",data);
+                  return(
+                    <tr>
+                    <th scope="row">{data.id}</th>
+                    <td>{`${data.symbol1}/${data.symbol2}`}</td>
+                    <td colspan="2">{data.address?.substring(0, 4) + "..." + data.address?.substring(data.address?.length - 4)}</td>
+                    <td>{data.reserve0}</td>
+                    <td>{data.reserve1}</td>
+                    <td>{data.token1?.substring(0, 4) + "..." + data.token1?.substring(data.token1?.length - 4)}</td>
+                    <td>{data.token2?.substring(0, 4) + "..." + data.token1?.substring(data.token2?.length - 4)}</td>
+                  </tr>
+                  )
+                
+                })}
+              </tbody>
+            </table>
+          </div>
 
         </div>
       </div>
