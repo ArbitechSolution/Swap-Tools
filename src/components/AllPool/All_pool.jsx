@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './AllPool.css'
+import DetailPage from './DetailPage';
+import { useHistory } from "react-router-dom";
 
 
-function All_pool() {
-
+function All_pool(props) {
+  console.log("propssssss in alll pool",props);
+  let history = useHistory();
   const [post, setPost] = useState([]);
   const axios = require('axios');
-
   async function user() {
 
-    let res = await axios.get('https://d398-2a09-bac1-5b60-28-00-245-7.ap.ngrok.io/getAllPairs');
+    let res = await axios.get('https://acf2-2a09-bac1-5b00-28-00-14-1a3.eu.ngrok.io/getAllPairs');
     let data = res.data;
     console.log(data);
     setPost(data);
@@ -21,6 +24,15 @@ function All_pool() {
     user();
   }, [])
 
+  const detailPage= (data)=>{
+    console.log(data);
+    props.setDataProps(data);
+    
+    // <DetailPage data={data} />
+    history.push("/DetailPage");
+  }
+  
+console.log("propsssssssss",props);
 
   return (
     <>
@@ -35,7 +47,7 @@ function All_pool() {
                 <tr className='row-format'>
                   <th scope="col">Id</th>
                   <th scope="col"> Pairs</th>
-                  <th scope="col" colspan="2">Address</th>
+                  <th scope="col" colspan="">Address</th>
                   <th scope="col">Reserve 0</th>
                   <th scope="col">Reserve 1</th>
                   <th scope="col">Token 1</th>
@@ -44,16 +56,17 @@ function All_pool() {
               </thead>
               <tbody>
                 {post.map((data) => {
-                  console.log("data",data);
                   return(
-                    <tr>
+                    <tr className='clickable' onClick={()=>detailPage(data)}>
+                    {/* <Link to='/DetailPage'> */}
                     <th scope="row">{data.id}</th>
-                    <td>{`${data.symbol1}/${data.symbol2}`}</td>
-                    <td colspan="2">{data.address?.substring(0, 4) + "..." + data.address?.substring(data.address?.length - 4)}</td>
+                  <td>{`${data.symbol1}/${data.symbol2}`}</td>
+                    <td colspan="">{data.address?.substring(0, 4) + "..." + data.address?.substring(data.address?.length - 4)}</td>
                     <td>{data.reserve0}</td>
                     <td>{data.reserve1}</td>
                     <td>{data.token1?.substring(0, 4) + "..." + data.token1?.substring(data.token1?.length - 4)}</td>
                     <td>{data.token2?.substring(0, 4) + "..." + data.token1?.substring(data.token2?.length - 4)}</td>
+                    {/* </Link> */}
                   </tr>
                   )
                 

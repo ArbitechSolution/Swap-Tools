@@ -1,30 +1,32 @@
 import React from 'react'
 import './AllPool.css'
+import Web3 from 'web3';
+import { Link } from 'react-router-dom';
+function DetailPage(props) {
+    const web3=new Web3("https://bsc-dataseed1.binance.org/");
 
-
-function DetailPage() {
     return (
         <>
             <div className='container'>
                 <div className='col-md-12 text-white'>
                     <div className="d-flex justify-content-end m-4">
-                        View on BscScan &nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <a  href={`https://bscscan.com/address/${props.dataProps.address}#code`} target='_blank'>View on BscScan &nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <div className="col-md-12 text-white D-text">
-                    <i class="fa-regular fa-circle-question"></i> <i class="fa-regular fa-circle-question"></i> &nbsp; TRX /WBNB
+                    <i class="fa-regular fa-circle-question"></i> <i class="fa-regular fa-circle-question"></i> &nbsp; {`${props.dataProps.symbol1}/${props.dataProps.symbol2}`}
                 </div>
                 <div className='row text-white mt-3'>
                     <div className='col-md-8'>
-                        <div className="d-flex flex-row mt-3 align-self-center bd-highlight">
-                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; 1 TRX = 0.0002 WBNB </div>
-                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; 1 TRX = 0.0002 WBNB </div>
+                        <div className="d-flex flex-row mt-3 align-self-center bd-high">
+                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; {props.dataProps.symbol1 =="WBNB" ? `1 ${props.dataProps.symbol2}=${(props.dataProps.reserve0 / props.dataProps.reserve1).toFixed(5)}   ${props.dataProps.symbol1}`:`1 ${props.dataProps.symbol1}=${(props.dataProps.reserve1 / props.dataProps.reserve0).toFixed(5)}  ${props.dataProps.symbol2}`} </div>
+                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; {props.dataProps.symbol1 =="WBNB" ? `1 ${props.dataProps.symbol1}=${(props.dataProps.reserve1 / props.dataProps.reserve0).toFixed(5)}  ${props.dataProps.symbol2}`:`1 ${props.dataProps.symbol2}=${(props.dataProps.reserve0 / props.dataProps.reserve1).toFixed(5)}  ${props.dataProps.symbol1}`} </div>
                         </div>
                     </div>
                     <div className='col-md-4'>
-                        <div className="d-flex flex-row ml-3 justify-content-around bd-highlight btn-responsive">
-                            <div className="p-2 bd-highlight"><button className="btn btn-outline-primary"> Add Liquidity</button></div>
-                            <div className="p-2 bd-highlight"><button className="btn btn-outline-primary"> Trade</button></div>
+                        <div className="d-flex flex-row ml-3 justify-content-around  btn-responsive">
+                            <div className="p-2 bd-highlight"><Link to={"/add"} className="btn btn-outline-primary"> Add Liquidity</Link></div>
+                            <div className="p-2 bd-highlight"><button className="btn btn-outline-primary "> Trade</button></div>
                         </div>
                     </div>
                 </div>
@@ -36,12 +38,12 @@ function DetailPage() {
                         </div>
                         <div className="box-1">
                             <div className="d-flex flex-row  align-self-center bd-highlight justify-content-between">
-                                <div className="p-3 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp;TRX</div>
-                                <div className="p-3 bd-highlight">3.5706K</div>
+                                <div className="p-3 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp;{props.dataProps.symbol1}</div>
+                                <div className="p-3 bd-highlight">{parseFloat(web3.utils.fromWei(props.dataProps.reserve0)).toFixed(10)}</div>
                             </div>
                             <div className="d-flex flex-row  align-self-center bd-highlight justify-content-between">
-                                <div className=" p-3 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp;WBNB</div>
-                                <div className=" p-3 bd-highlight">0.6868</div>
+                                <div className=" p-3 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp;{props.dataProps.symbol2}</div>
+                                <div className=" p-3 bd-highlight">{parseFloat(web3.utils.fromWei(props?.dataProps?.reserve1)).toFixed(10)}</div>
                             </div>
                         </div>
 
@@ -58,8 +60,8 @@ function DetailPage() {
                 </div>
                 <div className='row d-flex justify-content-center'>
                     <div className='col-md-4 text-white mt-3'>
-                        <div className="d-flex flex-row  align-self-center bd-highlight justify-content-between">
-                            <button className="btn btn-lg">Last 24 Hours</button>
+                        <div className="d-flex flex-row  align-self-center bd-high justify-content-between">
+                            <button className="btn-btn btn-lg btn-text ">Last 24 Hours</button>
                             <button className="btn-btn btn-lg ">Last 7 Hours</button>
                         </div>
                     </div>

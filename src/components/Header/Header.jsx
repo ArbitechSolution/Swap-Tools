@@ -50,30 +50,30 @@ function Header() {
             <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>
             <Nav>
-              <Nav.Link  className="gift gift3 m-0">
+              <Nav.Link className="gift gift3 m-0">
                 <Link to="/swap">
                   <FaGift className="gift"></FaGift> How To Win $100+
                 </Link>
               </Nav.Link>
-              <Nav.Link  className="gift3 work">
+              <Nav.Link className="gift3 work">
                 <Link to="/Work_main">How It Work</Link>
               </Nav.Link>
-              <Nav.Link  className="gift3">
+              <Nav.Link className="gift3">
                 <Link to="/About_main">About</Link>
               </Nav.Link>
-              <Nav.Link  className="gift3">
+              <Nav.Link className="gift3">
                 <Link to="/Faq_main">FAQ</Link>
               </Nav.Link>
-              <Nav.Link  className="gift3">
+              <Nav.Link className="gift3">
                 <Link to="/All_pool">All Pool</Link>
               </Nav.Link>
-              <Nav.Link  className="gift3">
+              {/* <Nav.Link className="gift3">
                 <Link to="/DetailPage">DetailPage</Link>
-              </Nav.Link>
+              </Nav.Link> */}
               {/* <Nav.Link className="gift3">
                 <Link to="/pool">Pool</Link>
               </Nav.Link> */}
-              
+
               {/* <NavDropdown title="Info" id="collasible-nav-dropdown" className="gift3">
                 <NavDropdown.Item href="#action/3.2">
                   <Link to="/Overview_main">Overview</Link>

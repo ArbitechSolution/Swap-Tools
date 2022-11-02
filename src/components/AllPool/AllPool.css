@@ -8,12 +8,13 @@
 .format thead th{
     /* border: 1px solid white !important; */
     font-size: 18px !important;
-    
     font-size: 20px !important;
+    cursor: pointer !important;
 }
 th, td {
     border-top: 1px solid white !important;
     padding: 25px !important;
+    cursor: pointer !important;
   }
 
 
@@ -28,7 +29,17 @@ th, td {
 }
 .btn-responsive{
     margin-left: 10px !important;
+    flex-direction: column !important;
+    text-align: center !important;
 }
+.bd-high{
+    font-size: 15px !important;
+    text-align: center;
+    flex-direction: column !important;
+}
+.btn-btn{
+    margin-bottom: 20px !important;
+} 
 }
 
 
@@ -62,7 +73,9 @@ th, td {
     border-radius: 10px !important;
     background-color: rgba(0, 0, 0, 0);
     color: white;
+    font-size: 18px !important;
 }
+
 .btn-btn:hover{
     background-color: #9616E3 !important;
     color: white;
@@ -94,4 +107,12 @@ th, td {
     position: absolute;
     top: 50%;
     right: 0;
+  }
+  .btn-text{
+    font-size: 18px !important;
+  }
+  .ahref{
+    text-decoration: none !important;
+    width: 100% !important;
+
   }

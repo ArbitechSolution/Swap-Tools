@@ -78,6 +78,8 @@ export default function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<any>(undefined)
   const [translatedLanguage, setTranslatedLanguage] = useState<any>(undefined)
   const [translations, setTranslations] = useState<Array<any>>([])
+const [dataProps,setDataProps]=useState([])
+
   const apiKey = `${process.env.REACT_APP_CROWDIN_APIKEY}`
   const projectId = parseInt(`${process.env.REACT_APP_CROWDIN_PROJECTID}`)
   const fileId = 6
@@ -132,8 +134,9 @@ export default function App() {
     setSelectedLanguage(langObject)
     localStorage.setItem(CACHE_KEY, langObject.code)
   }
-
+  
   useGetDocumentTitlePrice()
+  console.log("dataProps",dataProps);
 
   return (
     <Suspense fallback={null}>
@@ -172,8 +175,8 @@ export default function App() {
                       <Route path="/Work_main" component={Work_main} />
                       <Route path="/About_main" component={About_main} />
                       <Route path="/Faq_main" component={Faq_main} />
-                      <Route path="/All_pool" component={All_pool} />
-                      <Route path="/DetailPage" component={DetailPage}/>
+                      <Route path="/All_pool" ><All_pool setDataProps={setDataProps} /> </Route>
+                      <Route path="/DetailPage" ><DetailPage dataProps={dataProps} /></Route>
                       <Route path="/Overview_main" component={Overview_main} />
                       <Route path="/Pool_main" component={Pool_main} />
                       <Route path="/Token_main" component={Token_main} />
