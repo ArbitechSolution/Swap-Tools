@@ -40,8 +40,21 @@ th, td {
 .btn-btn{
     margin-bottom: 20px !important;
 } 
+.box{
+    height: 300px !important;
 }
 
+}
+@media screen and (min-width: 768px) {
+    
+.bg-high{
+    flex-direction: column !important;
+} 
+.bg-btn{
+    margin-top: 10px !important;
+}
+
+}
 
 /***********************************DetailPage*****************************************/
 .D-text{
@@ -52,7 +65,7 @@ th, td {
     margin-top: 25px !important;
     border:1px solid white !important;
     border-radius: 25px !important;
-    height: 280px !important;
+    height: auto !important;
     background-color: #1A202C !important;
 }
 .box-1{
@@ -67,6 +80,7 @@ th, td {
     height:60px !important;
     padding-bottom: 20px !important;
     background-color: #4A5568;
+    margin-bottom: 20px !important;
 }
 .btn-btn{
     border:#9616E3 1px solid !important;

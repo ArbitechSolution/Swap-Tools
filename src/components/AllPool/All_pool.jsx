@@ -12,7 +12,7 @@ function All_pool(props) {
   const axios = require('axios');
   async function user() {
 
-    let res = await axios.get('https://acf2-2a09-bac1-5b00-28-00-14-1a3.eu.ngrok.io/getAllPairs');
+    let res = await axios.get('https://pacific-waters-29061.herokuapp.com/getAllPairs');
     let data = res.data;
     console.log(data);
     setPost(data);

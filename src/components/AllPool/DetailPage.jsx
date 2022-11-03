@@ -19,14 +19,14 @@ function DetailPage(props) {
                 <div className='row text-white mt-3'>
                     <div className='col-md-8'>
                         <div className="d-flex flex-row mt-3 align-self-center bd-high">
-                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; {props.dataProps.symbol1 =="WBNB" ? `1 ${props.dataProps.symbol2}=${(props.dataProps.reserve0 / props.dataProps.reserve1).toFixed(5)}   ${props.dataProps.symbol1}`:`1 ${props.dataProps.symbol1}=${(props.dataProps.reserve1 / props.dataProps.reserve0).toFixed(5)}  ${props.dataProps.symbol2}`} </div>
-                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; {props.dataProps.symbol1 =="WBNB" ? `1 ${props.dataProps.symbol1}=${(props.dataProps.reserve1 / props.dataProps.reserve0).toFixed(5)}  ${props.dataProps.symbol2}`:`1 ${props.dataProps.symbol2}=${(props.dataProps.reserve0 / props.dataProps.reserve1).toFixed(5)}  ${props.dataProps.symbol1}`} </div>
+                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; {props.dataProps.symbol1 =="WBNB" ? `1 ${props.dataProps.symbol2}=${(props.dataProps.reserve0 / props.dataProps.reserve1).toFixed(7)}   ${props.dataProps.symbol1}`:`1 ${props.dataProps.symbol1}=${(props.dataProps.reserve1 / props.dataProps.reserve0).toFixed(7)}  ${props.dataProps.symbol2}`} </div>
+                            <div className="p-2 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp; {props.dataProps.symbol1 =="WBNB" ? `1 ${props.dataProps.symbol1}=${(props.dataProps.reserve1 / props.dataProps.reserve0).toFixed(7)}  ${props.dataProps.symbol2}`:`1 ${props.dataProps.symbol2}=${(props.dataProps.reserve0 / props.dataProps.reserve1).toFixed(7)}  ${props.dataProps.symbol1}`} </div>
                         </div>
                     </div>
                     <div className='col-md-4'>
-                        <div className="d-flex flex-row ml-3 justify-content-around  btn-responsive">
-                            <div className="p-2 bd-highlight"><Link to={"/add"} className="btn btn-outline-primary"> Add Liquidity</Link></div>
-                            <div className="p-2 bd-highlight"><button className="btn btn-outline-primary "> Trade</button></div>
+                        <div className="d-flex flex-row  justify-content-end  btn-responsive">
+                            <div className="bd-highlight"><Link to={"/add"} className="btn btn-lg "> Add Liquidity</Link></div>
+                            {/* <div className="bd-highlight"><button className="btn btn-lg"> Trade</button></div> */}
                         </div>
                     </div>
                 </div>
@@ -37,13 +37,13 @@ function DetailPage(props) {
                             <h4>TOTAL TOKENS LOCKED</h4>
                         </div>
                         <div className="box-1">
-                            <div className="d-flex flex-row  align-self-center bd-highlight justify-content-between">
-                                <div className="p-3 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp;{props.dataProps.symbol1}</div>
-                                <div className="p-3 bd-highlight">{parseFloat(web3.utils.fromWei(props.dataProps.reserve0)).toFixed(10)}</div>
+                            <div className="d-flex flex-row  align-self-center  justify-content-between">
+                                <div className="p-3"><i class="fa-regular fa-circle-question"></i> &nbsp;{props.dataProps.symbol1}</div>
+                                <div className="p-3">{parseFloat(web3.utils.fromWei(props.dataProps.reserve0)).toFixed(6)}</div>
                             </div>
-                            <div className="d-flex flex-row  align-self-center bd-highlight justify-content-between">
-                                <div className=" p-3 bd-highlight"><i class="fa-regular fa-circle-question"></i> &nbsp;{props.dataProps.symbol2}</div>
-                                <div className=" p-3 bd-highlight">{parseFloat(web3.utils.fromWei(props?.dataProps?.reserve1)).toFixed(10)}</div>
+                            <div className="d-flex flex-row  align-self-center justify-content-between">
+                                <div className=" p-3"><i class="fa-regular fa-circle-question"></i> &nbsp;{props.dataProps.symbol2}</div>
+                                <div className=" p-3">{parseFloat(web3.utils.fromWei(props?.dataProps?.reserve1)).toFixed(6)}</div>
                             </div>
                         </div>
 
@@ -53,16 +53,16 @@ function DetailPage(props) {
                         <div className="box-2">
                             <div className="d-flex flex-row  align-items-center bd-highlight justify-content-between">
                                 <div className="p-3 mt-2 bd-highlight"><i class="fa-regular fa-circle-question"></i></div>
-                                <div className="p-3  mt-2 bd-highlight">124.7759K</div>
+                                <div className="p-3  mt-2 bd-highlight">0000000K</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='row d-flex justify-content-center'>
                     <div className='col-md-4 text-white mt-3'>
-                        <div className="d-flex flex-row  align-self-center bd-high justify-content-between">
+                        <div className="d-flex flex-row  align-self-center bd-high justify-content-between bg-high">
                             <button className="btn-btn btn-lg btn-text ">Last 24 Hours</button>
-                            <button className="btn-btn btn-lg ">Last 7 Hours</button>
+                            <button className="btn-btn btn-lg bg-btn">Last 7 Hours</button>
                         </div>
                     </div>
                 </div>
