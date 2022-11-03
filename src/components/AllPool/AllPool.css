@@ -130,3 +130,7 @@ th, td {
     width: 100% !important;
 
   }
+.btn-dis 
+{
+background-color: gray !important;
+};
