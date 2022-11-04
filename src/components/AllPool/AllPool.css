@@ -43,6 +43,10 @@ th, td {
 .box{
     height: 300px !important;
 }
+.btn-btn-btn{
+    flex-direction: column !important;
+    padding: 10px !important;
+}
 
 }
 @media screen and (min-width: 768px) {
@@ -132,5 +136,74 @@ th, td {
   }
 .btn-dis 
 {
-background-color: gray !important;
+    background-color: rgba(0,0, 0, 0) !important;
+border: none !important;
+color: gray !important;
 };
+
+/* 
+@media only screen and (max-width: 768px) {
+    .btn-dis {
+      flex-direction: column !important;
+    }
+  } */
+
+  
+
+/***********************************************Candle Chart******************************/
+/* .bg-App{
+    color: #4A5568 !important;
+    background-color:green !important ;
+    fill: #9616E3 !important;
+    border-color: red !important;
+}
+#reactgooglegraph-1{
+    color: #4A5568 !important;
+    background-color:green !important ;
+    fill: #9616E3 !important;
+    border-color: red !important;
+
+} */
+Chart{
+    color: white !important;
+    background-color:green !important ;
+    fill: #9616E3 !important;
+}
+#reactgooglegraph-1 svg > rect {  /*#salesChart is ID of your google chart*/
+    fill: #4A5568 !important;
+    border-radius: 10px !important;
+}
+g text{
+    color: white !important;
+}
+
+#chart_div text{
+    fill: red !important;
+}
+
+text{
+    text-anchor: middle;
+    font-size: 12;
+    stroke: none;
+    stroke-width: 0;
+    fill: rgb(255, 255, 255);
+}
+/* rect {
+   
+    width: 10;
+    height: 36;
+    stroke: rgb(51, 102, 204);
+    stroke-width: 2;
+    fill: rgb(51, 102, 204);
+} */
+path{
+    stroke: rgb(255, 204, 204);
+    stroke-width: 1;
+    fill: rgb(255, 0, 0);
+    filter: url(http://localhost:3000/#_ABSTRACT_RENDERER_ID_5);
+}
+
+user agent stylesheet
+:not(svg) {
+    transform-origin: 0px 0px;
+}
